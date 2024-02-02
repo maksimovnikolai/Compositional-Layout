@@ -30,7 +30,7 @@ private extension CollectionViewController {
     
     func commonInit() {
         configureCollectionView()
-
+        configureDataSource()
     }
     
     
@@ -70,5 +70,20 @@ private extension CollectionViewController {
     }
     
     
-
+    func configureDataSource() {
+        // настройка источника данных
+        dataSource = UICollectionViewDiffableDataSource<Section, Int>(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCell.identifier, for: indexPath) as? CustomCell else { fatalError("Could not dequeue a cell") }
+            
+            cell.label.text = "\(item)"
+            cell.backgroundColor = .orange
+            return cell
+        })
+        
+        // установка исходного снимка (snapshot)
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Int>()
+        snapshot.appendSections([.main]) // количество секций  == 1
+        snapshot.appendItems(Array(1...100)) // количество элементов в секции
+        dataSource.apply(snapshot)
+    }
 }
