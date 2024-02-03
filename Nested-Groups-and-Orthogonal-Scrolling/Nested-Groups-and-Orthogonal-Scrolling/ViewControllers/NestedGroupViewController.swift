@@ -58,6 +58,9 @@ final class NestedGroupViewController: UIViewController {
     
     private func commonInit() {
         navigationController?.title = "Nested Groups and Orthogonal Scrolling"
+        
+        configureCollectionView()
+        configureDataSource()
     }
 }
 
@@ -119,5 +122,47 @@ extension NestedGroupViewController {
             return section
         }
         return layout
+    }
+}
+
+// MARK: - Configure Data Source
+extension NestedGroupViewController {
+    
+    private func configureDataSource() {
+        dataSource = DataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCell.reuseIdentifier, for: indexPath) as? CustomCell else { return UICollectionViewCell() }
+            
+            // item is Int
+            cell.textLabel.text = "\(item)" // e.g 1, 2
+            cell.backgroundColor = .orange
+            cell.layer.cornerRadius = 10
+            return cell
+        })
+        
+        // dequeue the header supplementary view
+        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseIdentifier, for: indexPath) as? HeaderView,
+                  let sectionKind = SectionKind(rawValue: indexPath.section)  else {
+                fatalError("could not dequeue a HeaderView")
+            }
+            
+            // configure the HeaderView
+            headerView.textLabel.text = sectionKind.sectionTitle
+            headerView.textLabel.textAlignment = .left
+            headerView.textLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+            return headerView
+        }
+        
+        // create initial snapshot
+        var snapshot = NSDiffableDataSourceSnapshot<SectionKind, Int>()
+        
+        snapshot.appendSections([.first, .second, .third])
+        
+        // populate the sections (3)
+        snapshot.appendItems(Array(1...20), toSection: .first)
+        snapshot.appendItems(Array(21...40), toSection: .second)
+        snapshot.appendItems(Array(41...60), toSection: .third)
+        
+        dataSource.apply(snapshot)
     }
 }
