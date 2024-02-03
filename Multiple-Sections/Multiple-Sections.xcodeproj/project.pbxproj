@@ -12,6 +12,8 @@
 		AD3BA5162B6E54BB00D115A8 /* MultipleSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3BA5152B6E54BB00D115A8 /* MultipleSectionViewController.swift */; };
 		AD3BA51B2B6E54BC00D115A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD3BA51A2B6E54BC00D115A8 /* Assets.xcassets */; };
 		AD3BA51E2B6E54BC00D115A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD3BA51C2B6E54BC00D115A8 /* LaunchScreen.storyboard */; };
+		AD3BA52A2B6E5CE400D115A8 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3BA5292B6E5CE400D115A8 /* CustomCell.swift */; };
+		AD3BA52C2B6E5DE000D115A8 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3BA52B2B6E5DE000D115A8 /* HeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		AD3BA51A2B6E54BC00D115A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD3BA51D2B6E54BC00D115A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD3BA51F2B6E54BC00D115A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD3BA5292B6E5CE400D115A8 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		AD3BA52B2B6E5DE000D115A8 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				AD3BA5152B6E54BB00D115A8 /* MultipleSectionViewController.swift */,
+				AD3BA5292B6E5CE400D115A8 /* CustomCell.swift */,
+				AD3BA52B2B6E5DE000D115A8 /* HeaderView.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -166,8 +172,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD3BA52C2B6E5DE000D115A8 /* HeaderView.swift in Sources */,
 				AD3BA5162B6E54BB00D115A8 /* MultipleSectionViewController.swift in Sources */,
 				AD3BA5122B6E54BB00D115A8 /* AppDelegate.swift in Sources */,
+				AD3BA52A2B6E5CE400D115A8 /* CustomCell.swift in Sources */,
 				AD3BA5142B6E54BB00D115A8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
